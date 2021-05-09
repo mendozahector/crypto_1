@@ -141,4 +141,4 @@ cython_debug/
 .DS_Store
 module1.mp4
 cryptodata.json
-wallet.json
+wallet.csv
