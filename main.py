@@ -1,6 +1,7 @@
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
+import csv
 
 class Currency:
     def __init__(self, name, symbol, amount):
@@ -11,15 +12,12 @@ class Currency:
 def digital_wallet():
     wallet = list()
 
-    dollars = Currency('Dollars', 'USD', 4577)
-    bitcoin = Currency('Bitcoin', 'BTC', 3.578)
-    ethereum = Currency('Ethereum', 'ETH', 1.23)
-    dogecoin = Currency('Dogecoin', 'DOGE', 12.245)
-
-    wallet.append(dollars)
-    wallet.append(bitcoin)
-    wallet.append(ethereum)
-    wallet.append(dogecoin)
+    with open('wallet.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        #line_count = 0
+        for row in csv_reader:
+            new_currency = Currency(row[0], row[1], row[2])
+            wallet.append(new_currency)
 
     def print_money():
         print("Your current digital wallet:\n")
