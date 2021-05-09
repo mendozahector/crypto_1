@@ -92,11 +92,15 @@ def crypto_charts():
         
         for crypto in data['data']:
             print(f"* {crypto['name']} - {crypto['symbol']}: $ {crypto['quote']['USD']['price']:.4f}")
+
+        out_file = open("cryptodata.json", "w")
+        json.dump(data, out_file, indent = 6)
+        out_file.close()
     except (ConnectionError, Timeout, TooManyRedirects) as e:
         print(e)
 
     print()
-    
+
 def crypto_trading():
     print("Ready to trade?\n")
 

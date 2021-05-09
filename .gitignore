@@ -140,3 +140,5 @@ cython_debug/
 # macOS
 .DS_Store
 module1.mp4
+cryptodata.json
+wallet.json
