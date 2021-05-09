@@ -16,7 +16,7 @@ def digital_wallet():
         csv_reader = csv.reader(csv_file, delimiter=',')
         #line_count = 0
         for row in csv_reader:
-            new_currency = Currency(row[0], row[1], row[2])
+            new_currency = Currency(row[0], row[1], float(row[2]))
             wallet.append(new_currency)
 
     def print_money():
@@ -38,6 +38,11 @@ def digital_wallet():
         try:
             choice = int(input("> "))
             if choice == 0:
+                with open('wallet.csv', mode='w') as csv_file:
+                    csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+                    for currency in wallet:
+                        csv_writer.writerow([currency.name, currency.symbol, currency.amount])
                 break
             elif choice == 1:
                 deposit = float(input("Please enter your amount in dollars (USD): "))
