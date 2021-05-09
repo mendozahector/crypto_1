@@ -105,7 +105,7 @@ def crypto_charts():
     print()
 
 def crypto_trading():
-    print("Ready to trade?\n")
+    print("Ready to trade? Please update to version 2.0\n")
 
 menu = """Welcome to your Crypto Exchange Market. Please select an option:
     1. My Digital Wallet
@@ -129,6 +129,7 @@ while choice != 0:
             print(menu)
         elif choice == 3:
             crypto_trading()
+            print(menu)
         else:
             raise ValueError
     except ValueError:
